@@ -2,6 +2,8 @@ FROM ubuntu:22.04
 RUN apt-get update
 RUN apt-get install -y nginx openssl
 RUN openssl req -x509 -nodes -days 90 -subj "/C=CA/ST=QC/O=Cyware/CN=assignment.cyware.local" -addext "subjectAltName=DNS:cyware.local" -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt;
+COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
+RUN chown root:root /etc/nginx/snippets/self-signed.conf
 RUN apt-get install -y python3 python3-distutils python3-pip
 WORKDIR /app
 COPY app.py . 
