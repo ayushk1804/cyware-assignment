@@ -8,6 +8,7 @@ RUN chown root:root /etc/nginx/snippets/self-signed.conf
 RUN chown root:root /etc/nginx/sites-available/aayush-app.conf
 RUN ln -sf /etc/nginx/sites-available/aayush-app.conf /etc/nginx/sites-enabled/aayush-app.conf
 RUN apt-get install -y python3 python3-distutils python3-pip
+RUN rm -rf /etc/nginx/sites-enabled/default
 WORKDIR /app
 COPY webapp/app.py . 
 COPY webapp/test_app.py . 
