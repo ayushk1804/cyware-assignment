@@ -14,4 +14,7 @@ COPY webapp/test_app.py .
 COPY webapp/requirements.txt .
 RUN pip install -r requirements.txt
 RUN pytest test_app.py | tee /app/pytest.log
-CMD ["/bin/bash"]
+RUN nginx -t
+COPY entrypoint.sh .
+RUN chmod a+x entrypoint.sh
+CMD [ "./entrypoint.sh" ]
