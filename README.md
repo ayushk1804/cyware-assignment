@@ -12,4 +12,16 @@ Steps:
   - Build: `$ docker-compose build`
   - Run: `$ docker-compose up`
 
-Q. Describe how you tested and provide output
+> Q. Describe how you tested and provide output
+Testing the project:
+- Code:
+  - I have added unittests for testing the code. The unittests can be triggered by installing the requirements for project then executing `pytest test_app.py`.
+  - There are 2 unittests configured:
+    - Health check: This test ensures that the health check api is giving status code 200. It will fail if respose status_code!=200
+    - View Assertion: This test ensures that our output is as expected. In my code, I have asserted it to the respose text, which should be `Hi Team!`.
+    - Screenshots of executed pytests
+    - ![webapp.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/webapp.png)
+- Docker-compose:
+  - I have tested it by executing the project using docker-compose.
+  - Screenshots of executing program
+  - ![docker-compose.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/docker-compose.png)
