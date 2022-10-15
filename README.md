@@ -22,10 +22,12 @@ Testing the project:
     - Health check: This test ensures that the health check api is giving status code 200. It will fail if respose status_code!=200
     - View Assertion: This test ensures that our output is as expected. In my code, I have asserted it to the respose text, which should be `Hi Team!`.
     - Screenshots of executed pytests
-    - ![webapp.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/webapp.png)
+    - ![pytest.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/pytest.png)
+
 - Docker-compose:
   - I have tested it by executing the project using docker-compose.
   - Screenshots of executing program
+  - ![webapp.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/webapp.png)
   - ![docker-compose.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/docker-compose.png)
 
 > Q. Is the stack ready to be used in production? (Give reasons for whatever your answer is)
