@@ -1,8 +1,9 @@
 # cyware-assignment
 A repository for solving cyware assignment
 
-## Part 1
-Steps:
+## Question 1 
+### Part 1
+#### Getting Started:
 - Executing using Dockerfile:
   - Navigate to Part 1 dir, containing Dockerfile
   - Build image: `$ docker build -f Dockerfile -t app_runner .`
@@ -13,6 +14,7 @@ Steps:
   - Run: `$ docker-compose up`
 
 > Q. Describe how you tested and provide output
+
 Testing the project:
 - Code:
   - I have added unittests for testing the code. The unittests can be triggered by installing the requirements for project then executing `pytest test_app.py`.
@@ -32,3 +34,36 @@ No, the stack is not ready for use in production.
 For production environment, we can cut down on our images and extract the useful parts to a slimmer image.
 We can enable high availability by creating a fleet of containers and loadbalancing between them to ensure availability of our application.
 We should also add a domain to the application for easier access, followed by adding a signed certificate for the used address.
+
+### Part 2
+Jenkins Groovy Script:
+Triggering auto builds
+We can add webhooks for triggering a Jenkinsbuild from our SCM. Lets assume that our SCM github then we can trigger Jenkins build API.
+To do this, we will have to enable webhooks in our desired github repo, In the webhook settings page ‘Which events would you like to trigger this webhook?’ choose ‘Let me select individual events.’ Then, check ‘Pull Requests’ and ‘Pushes’. At the end of this option, make sure that the ‘Active’ option is checked and click on ‘Add webhook’.
+In Jenkins, we add a build trigger (GitHub hook trigger for GITScm polling)
+
+`Sample Jenkinsfile`
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage ('GIT Checkout'){
+            steps {
+                git changelog: false, poll: false, url: 'https://github.com/ayushk1804/cyware-assignment.git'
+            }
+        }
+        
+        stage('build') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        
+        stage ('Test'){
+            steps {
+                sh 'pytest test_app.py'
+            }
+        }
+    }
+}
+```
