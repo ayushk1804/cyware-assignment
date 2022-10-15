@@ -69,3 +69,10 @@ pipeline {
     }
 }
 ```
+
+## Scripting Problem
+I have tried to solve the problem with keeping readiblity in mind. To achieve this and keep the code clean, I have used list comprehension.
+
+Assumptions while solving the problem:
+- Given: Hostname format is taken as `prefix + $sequence_number + "-" + cluter_id + "." + $region + "." + $environment + "." + domain`
+Based on the given static fields I have used hardcoded lengths to solve the problem
