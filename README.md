@@ -27,6 +27,7 @@ Testing the project:
   - ![docker-compose.png](https://github.com/ayushk1804/cyware-assignment/blob/main/Part%201/images/docker-compose.png)
 
 > Q. Is the stack ready to be used in production? (Give reasons for whatever your answer is)
+
 No, the stack is not ready for use in production.
 For production environment, we can cut down on our images and extract the useful parts to a slimmer image.
 We can enable high availability by creating a fleet of containers and loadbalancing between them to ensure availability of our application.
